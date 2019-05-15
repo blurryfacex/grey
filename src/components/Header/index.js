@@ -3,11 +3,13 @@ import Nav from 'react-bootstrap/Nav'
 import NavDropdown from 'react-bootstrap/NavDropdown'
 import React from 'react'
 
+import './index.less'
+
 export default class Header extends React.Component {
 
   render () {
     return (
-        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+        <Navbar className="navbar-dark bg-dark " collapseOnSelect expand="lg" variant="dark" >
           <div className="container">
           <Navbar.Brand href="#home">b&B</Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -31,7 +33,6 @@ export default class Header extends React.Component {
           </Navbar.Collapse>
           </div>
         </Navbar>
-
     )
   }
 }
