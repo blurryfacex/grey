@@ -1,10 +1,10 @@
 import React from 'react'
 import App from './App'
-import { HashRouter, Route } from 'react-router-dom'
+import { HashRouter, Route, Switch, Redirect } from 'react-router-dom'
 import index from "./pages/front/index"
 import Home from "./home"
+import explore from "./pages/front/explore"
 
-import './'
 export default class ERouter extends React.Component {
 
   render () {
@@ -13,12 +13,14 @@ export default class ERouter extends React.Component {
         <App>
             <Route path="/" render={() =>
               <Home>
-                <Route path="/" component={index}/>
+                <Switch>
+                  <Route path="/explore" component={explore} />
+                  <Route path="/" component={index} />
+                </Switch>
               </Home>
             }/>
         </App>
       </HashRouter>
     )
   }
-
 }

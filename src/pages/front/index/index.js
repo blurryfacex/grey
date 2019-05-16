@@ -59,10 +59,10 @@ export default class index extends React.Component {
         <section>
           <div className="swiper container">
             <h4>最近更新</h4>
-            <div className="nbar"></div>
-            <div className="MoviePostersGrid-container row ">
-              <div className="cleared-col MoviePostersGrid-poster  col-md-3 col-sm-4 col-xs-6">
-                <div className="PosterSlide"><a aria-label="Avengers: Endgame" className="Link" aria-disabled="" itemProp="url" href="/movies/avengers-endgame-45840">
+            <hr />
+            <div className="row ">
+              <div className="col-md-3 col-sm-4 col-6">
+                <div className="PosterSlide"><a aria-label="Avengers: Endgame" className="Link" itemProp="url" href="/movies/avengers-endgame-45840">
                   <picture className="Picture--rectangle">
                     <source srcSet="https://amc-theatres-res.cloudinary.com/image/upload/f_auto,fl_lossy,h_600,q_auto,w_400/v1553695740/amc-cdn/production/2/movies/45800/45840/PosterDynamic/75045.jpg" media="(min-width: 767px)"/>
                     <img src="https://amc-theatres-res.cloudinary.com/image/upload/f_auto,fl_lossy,h_300,q_auto,w_200/v1553695740/amc-cdn/production/2/movies/45800/45840/PosterDynamic/75045.jpg" alt="Avengers: Endgame" width="220px"/>
@@ -70,14 +70,14 @@ export default class index extends React.Component {
                 </a>
                   <div className="PosterContent"></div>
                 </div>
-                <div className="MoviePostersGrid-text"><a className="Link" aria-disabled="" itemProp="url" href="/movies/avengers-endgame-45840"><h3>Avengers: Endgame</h3></a>
+                <div className="MoviePostersGrid-text"><a className="Link" itemProp="url" href="/movies/avengers-endgame-45840"><h3>Avengers: Endgame</h3></a>
                   <div className="Headline--eyebrow">
                     <p></p>
                   </div>
                   <a className="Btn Btn--primary" href="/movies/avengers-endgame-45840/showtimes">Get Tickets</a></div>
               </div>
-              <div className="cleared-col MoviePostersGrid-poster  col-md-3 col-sm-4 col-xs-6">
-                <div className="PosterSlide"><a aria-label="Avengers: Endgame" className="Link" aria-disabled="" itemProp="url" href="/movies/avengers-endgame-45840">
+              <div className="col-md-3 col-sm-4 col-6">
+                <div className="PosterSlide"><a aria-label="Avengers: Endgame" className="Link" itemProp="url" href="/movies/avengers-endgame-45840">
                   <picture className="Picture--rectangle">
                     <source srcSet="https://amc-theatres-res.cloudinary.com/image/upload/f_auto,fl_lossy,h_600,q_auto,w_400/v1553695740/amc-cdn/production/2/movies/45800/45840/PosterDynamic/75045.jpg" media="(min-width: 767px)"/>
                     <img src="https://amc-theatres-res.cloudinary.com/image/upload/f_auto,fl_lossy,h_300,q_auto,w_200/v1553695740/amc-cdn/production/2/movies/45800/45840/PosterDynamic/75045.jpg" alt="Avengers: Endgame" width="220px"/>
@@ -85,14 +85,14 @@ export default class index extends React.Component {
                 </a>
                   <div className="PosterContent"></div>
                 </div>
-                <div className="MoviePostersGrid-text"><a className="Link" aria-disabled="" itemProp="url" href="/movies/avengers-endgame-45840"><h3>Avengers: Endgame</h3></a>
+                <div className="MoviePostersGrid-text"><a className="Link" itemProp="url" href="/movies/avengers-endgame-45840"><h3>Avengers: Endgame</h3></a>
                   <div className="Headline--eyebrow">
                     <p></p>
                   </div>
                   <a className="Btn Btn--primary" href="/movies/avengers-endgame-45840/showtimes">Get Tickets</a></div>
               </div>
-              <div className="cleared-col MoviePostersGrid-poster  col-md-3 col-sm-4 col-xs-6">
-                <div className="PosterSlide"><a aria-label="Avengers: Endgame" className="Link" aria-disabled="" itemProp="url" href="/movies/avengers-endgame-45840">
+              <div className="col-md-3 col-sm-4 col-6">
+                <div className="PosterSlide"><a aria-label="Avengers: Endgame" className="Link" itemProp="url" href="/movies/avengers-endgame-45840">
                   <picture className="Picture--rectangle">
                     <source srcSet="https://amc-theatres-res.cloudinary.com/image/upload/f_auto,fl_lossy,h_600,q_auto,w_400/v1553695740/amc-cdn/production/2/movies/45800/45840/PosterDynamic/75045.jpg" media="(min-width: 767px)"/>
                     <img src="https://amc-theatres-res.cloudinary.com/image/upload/f_auto,fl_lossy,h_300,q_auto,w_200/v1553695740/amc-cdn/production/2/movies/45800/45840/PosterDynamic/75045.jpg" alt="Avengers: Endgame" width="220px"/>
@@ -100,14 +100,14 @@ export default class index extends React.Component {
                 </a>
                   <div className="PosterContent"></div>
                 </div>
-                <div className="MoviePostersGrid-text"><a className="Link" aria-disabled="" itemProp="url" href="/movies/avengers-endgame-45840"><h3>Avengers: Endgame</h3></a>
+                <div className="MoviePostersGrid-text"><a className="Link" itemProp="url" href="/movies/avengers-endgame-45840"><h3>Avengers: Endgame</h3></a>
                   <div className="Headline--eyebrow">
                     <p></p>
                   </div>
                   <a className="Btn Btn--primary" href="/movies/avengers-endgame-45840/showtimes">Get Tickets</a></div>
               </div>
-              <div className="cleared-col MoviePostersGrid-poster  col-md-3 col-sm-4 col-xs-6">
-                <div className="PosterSlide"><a aria-label="Avengers: Endgame" className="Link" aria-disabled="" itemProp="url" href="/movies/avengers-endgame-45840">
+              <div className="col-md-3 col-sm-4 col-6">
+                <div className="PosterSlide"><a aria-label="Avengers: Endgame" className="Link" itemProp="url" href="/movies/avengers-endgame-45840">
                   <picture className="Picture--rectangle">
                     <source srcSet="https://amc-theatres-res.cloudinary.com/image/upload/f_auto,fl_lossy,h_600,q_auto,w_400/v1553695740/amc-cdn/production/2/movies/45800/45840/PosterDynamic/75045.jpg" media="(min-width: 767px)"/>
                     <img src="https://amc-theatres-res.cloudinary.com/image/upload/f_auto,fl_lossy,h_300,q_auto,w_200/v1553695740/amc-cdn/production/2/movies/45800/45840/PosterDynamic/75045.jpg" alt="Avengers: Endgame" width="220px"/>
@@ -115,61 +115,58 @@ export default class index extends React.Component {
                 </a>
                   <div className="PosterContent"></div>
                 </div>
-                <div className="MoviePostersGrid-text"><a className="Link" aria-disabled="" itemProp="url" href="/movies/avengers-endgame-45840"><h3>Avengers: Endgame</h3></a>
+                <div className="MoviePostersGrid-text"><a className="Link" itemProp="url" href="/movies/avengers-endgame-45840"><h3>Avengers: Endgame</h3></a>
                   <div className="Headline--eyebrow">
                     <p></p>
                   </div>
                   <a className="Btn Btn--primary" href="/movies/avengers-endgame-45840/showtimes">Get Tickets</a></div>
               </div>
-              <div className="cleared-col MoviePostersGrid-poster  col-md-3 col-sm-4 col-xs-6">
-              <div className="PosterSlide"><a aria-label="Avengers: Endgame" className="Link" aria-disabled="" itemProp="url" href="/movies/avengers-endgame-45840">
-                <picture className="Picture--rectangle">
-                  <source srcSet="https://amc-theatres-res.cloudinary.com/image/upload/f_auto,fl_lossy,h_600,q_auto,w_400/v1553695740/amc-cdn/production/2/movies/45800/45840/PosterDynamic/75045.jpg" media="(min-width: 767px)"/>
-                  <img src="https://amc-theatres-res.cloudinary.com/image/upload/f_auto,fl_lossy,h_300,q_auto,w_200/v1553695740/amc-cdn/production/2/movies/45800/45840/PosterDynamic/75045.jpg" alt="Avengers: Endgame" width="220px"/>
-                </picture>
-              </a>
-                <div className="PosterContent"></div>
-              </div>
-              <div className="MoviePostersGrid-text"><a className="Link" aria-disabled="" itemProp="url" href="/movies/avengers-endgame-45840"><h3>Avengers: Endgame</h3></a>
-                <div className="Headline--eyebrow">
-                  <p></p>
+              <div className="col-md-3 col-sm-4 col-6">
+                <div className="PosterSlide"><a aria-label="Avengers: Endgame" className="Link" itemProp="url" href="/movies/avengers-endgame-45840">
+                  <picture className="Picture--rectangle">
+                    <source srcSet="https://amc-theatres-res.cloudinary.com/image/upload/f_auto,fl_lossy,h_600,q_auto,w_400/v1553695740/amc-cdn/production/2/movies/45800/45840/PosterDynamic/75045.jpg" media="(min-width: 767px)"/>
+                    <img src="https://amc-theatres-res.cloudinary.com/image/upload/f_auto,fl_lossy,h_300,q_auto,w_200/v1553695740/amc-cdn/production/2/movies/45800/45840/PosterDynamic/75045.jpg" alt="Avengers: Endgame" width="220px"/>
+                  </picture>
+                </a>
+                  <div className="PosterContent"></div>
                 </div>
-                <a className="Btn Btn--primary" href="/movies/avengers-endgame-45840/showtimes">Get Tickets</a></div>
+                <div className="MoviePostersGrid-text"><a className="Link" itemProp="url" href="/movies/avengers-endgame-45840"><h3>Avengers: Endgame</h3></a>
+                  <div className="Headline--eyebrow">
+                    <p></p>
+                  </div>
+                  <a className="Btn Btn--primary" href="/movies/avengers-endgame-45840/showtimes">Get Tickets</a></div>
+              </div>
+              <div className="col-md-3 col-sm-4 col-6">
+                <div className="PosterSlide"><a aria-label="Avengers: Endgame" className="Link" itemProp="url" href="/movies/avengers-endgame-45840">
+                  <picture className="Picture--rectangle">
+                    <source srcSet="https://amc-theatres-res.cloudinary.com/image/upload/f_auto,fl_lossy,h_600,q_auto,w_400/v1553695740/amc-cdn/production/2/movies/45800/45840/PosterDynamic/75045.jpg" media="(min-width: 767px)"/>
+                    <img src="https://amc-theatres-res.cloudinary.com/image/upload/f_auto,fl_lossy,h_300,q_auto,w_200/v1553695740/amc-cdn/production/2/movies/45800/45840/PosterDynamic/75045.jpg" alt="Avengers: Endgame" width="220px"/>
+                  </picture>
+                </a>
+                  <div className="PosterContent"></div>
+                </div>
+                <div className="MoviePostersGrid-text"><a className="Link" itemProp="url" href="/movies/avengers-endgame-45840"><h3>Avengers: Endgame</h3></a>
+                  <div className="Headline--eyebrow">
+                    <p></p>
+                  </div>
+                  <a className="Btn Btn--primary" href="/movies/avengers-endgame-45840/showtimes">Get Tickets</a></div>
+              </div>
+              <div className="col-md-3 col-sm-4 col-6">
+                <div className="PosterSlide"><a aria-label="Avengers: Endgame" className="Link" itemProp="url" href="/movies/avengers-endgame-45840">
+                  <picture className="Picture--rectangle">
+                    <source srcSet="https://amc-theatres-res.cloudinary.com/image/upload/f_auto,fl_lossy,h_600,q_auto,w_400/v1553695740/amc-cdn/production/2/movies/45800/45840/PosterDynamic/75045.jpg" media="(min-width: 767px)"/>
+                    <img src="https://amc-theatres-res.cloudinary.com/image/upload/f_auto,fl_lossy,h_300,q_auto,w_200/v1553695740/amc-cdn/production/2/movies/45800/45840/PosterDynamic/75045.jpg" alt="Avengers: Endgame" width="220px"/>
+                  </picture>
+                </a>
+                  <div className="PosterContent"></div>
+                </div>
+                <div className="MoviePostersGrid-text"><a className="Link" itemProp="url" href="/movies/avengers-endgame-45840"><h3>Avengers: Endgame</h3></a>
+                  <div className="Headline--eyebrow">
+                    <p></p>
+                  </div>
+                  <a className="Btn Btn--primary" href="/movies/avengers-endgame-45840/showtimes">Get Tickets</a></div>
+              </div>
             </div>
-              <div className="cleared-col MoviePostersGrid-poster  col-md-3 col-sm-4 col-xs-6">
-                <div className="PosterSlide"><a aria-label="Avengers: Endgame" className="Link" aria-disabled="" itemProp="url" href="/movies/avengers-endgame-45840">
-                  <picture className="Picture--rectangle">
-                    <source srcSet="https://amc-theatres-res.cloudinary.com/image/upload/f_auto,fl_lossy,h_600,q_auto,w_400/v1553695740/amc-cdn/production/2/movies/45800/45840/PosterDynamic/75045.jpg" media="(min-width: 767px)"/>
-                    <img src="https://amc-theatres-res.cloudinary.com/image/upload/f_auto,fl_lossy,h_300,q_auto,w_200/v1553695740/amc-cdn/production/2/movies/45800/45840/PosterDynamic/75045.jpg" alt="Avengers: Endgame" width="220px"/>
-                  </picture>
-                </a>
-                  <div className="PosterContent"></div>
-                </div>
-                <div className="MoviePostersGrid-text"><a className="Link" aria-disabled="" itemProp="url" href="/movies/avengers-endgame-45840"><h3>Avengers: Endgame</h3></a>
-                  <div className="Headline--eyebrow">
-                    <p></p>
-                  </div>
-                  <a className="Btn Btn--primary" href="/movies/avengers-endgame-45840/showtimes">Get Tickets</a></div>
-              </div>
-              <div className="cleared-col MoviePostersGrid-poster  col-md-3 col-sm-4 col-xs-6">
-                <div className="PosterSlide"><a aria-label="Avengers: Endgame" className="Link" aria-disabled="" itemProp="url" href="/movies/avengers-endgame-45840">
-                  <picture className="Picture--rectangle">
-                    <source srcSet="https://amc-theatres-res.cloudinary.com/image/upload/f_auto,fl_lossy,h_600,q_auto,w_400/v1553695740/amc-cdn/production/2/movies/45800/45840/PosterDynamic/75045.jpg" media="(min-width: 767px)"/>
-                    <img src="https://amc-theatres-res.cloudinary.com/image/upload/f_auto,fl_lossy,h_300,q_auto,w_200/v1553695740/amc-cdn/production/2/movies/45800/45840/PosterDynamic/75045.jpg" alt="Avengers: Endgame" width="220px"/>
-                  </picture>
-                </a>
-                  <div className="PosterContent"></div>
-                </div>
-                <div className="MoviePostersGrid-text"><a className="Link" aria-disabled="" itemProp="url" href="/movies/avengers-endgame-45840"><h3>Avengers: Endgame</h3></a>
-                  <div className="Headline--eyebrow">
-                    <p></p>
-                  </div>
-                  <a className="Btn Btn--primary" href="/movies/avengers-endgame-45840/showtimes">Get Tickets</a></div>
-              </div>
-
-
-            </div>
-            <div className="nbar"></div>
           </div>
         </section>
       </div>
