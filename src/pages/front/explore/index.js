@@ -3,7 +3,20 @@ import React from 'react'
 import './index.less'
 
 export default class explore extends React.Component {
+  constructor (props) {
+    super(props)
 
+    this.state = {
+    }
+  }
+
+  componentDidMount() {
+    this.
+  }
+
+  _getList = () => {
+
+  }
 
   render () {
     return (

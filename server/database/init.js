@@ -1,12 +1,12 @@
 const mongoose = require('mongoose')
-const db = ''
+const db = 'mongodb://crazy8:vs48yxCeKy0@173.82.255.6/bb'
 const glob = require('glob')
 const { resolve } = require('path')
 
 mongoose.Promise = global.Promise
 
 exports.initSchema = () => {
-  glob.sync(resolve(__dirname, './schema', '**/*.js').forEach(require))
+  glob.sync(resolve(__dirname, './schema', '**/*.js')).forEach(require)
 }
 
 exports.connect = () => {
@@ -18,3 +18,16 @@ exports.connect = () => {
     console.log(err ? 'Conect Error' + err : 'Connection Success')
   })
 }
+
+// ;(async () => {
+//   this.connect()
+//   this.initSchema()
+//
+//   // const User = mongoose.model('User')
+//   // const users = await User.find({})
+//
+//   const Movie = mongoose.model('Movie')
+//   const movies = await Movie.find({})
+//
+//   console.log(movies)
+// })()
