@@ -60,3 +60,58 @@ export const setRouter = method => path => (target, key, descriptor) => {
   })
   return descriptor
 }
+
+export const Controller = path => target => (target.prototype[pathPrefix] = path)
+
+export const Get = setRouter('get')
+
+export const Post = setRouter('post')
+
+export const Put = setRouter('put')
+
+export const Delete = setRouter('delete')
+
+export const Log = convert(async (ctx, next) => {
+  logTimes++
+  console.time(`${logTimes}: ${ctx.method} - ${ctx.url}`)
+  await next()
+  console.timeEnd(`${logTimes}: ${ctx.method} - ${ctx.url}`)
+})
+
+export const Required = paramObj => convert(async (ctx, next) => {
+  let errs = []
+
+  R.forEachObjIndexed(
+    (val, key) => {
+      errs = errs.concat(
+        R.filter(
+          name => !R.has(name, ctx.request[key])
+        )(val)
+      )
+    }
+  )(paramObj)
+
+  if (!R.isempty(errs)) {
+    return (
+      ctx.body = {
+        success: false,
+        errorCode: 412,
+        errMsg: `${R.join(', ', errs)} is required`
+      }
+    )
+  }
+  await next()
+})
+
+export const Auth = convert(async (ctx, next) => {
+  if (!ctx.session.user) {
+    return (
+      ctx.body = {
+        success: false,
+        errCode: 401,
+        errMsg: '登录信息已失效'
+      }
+    )
+  }
+  await next()
+})
