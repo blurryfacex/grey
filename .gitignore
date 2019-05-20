@@ -24,4 +24,6 @@ yarn-error.log*
 
 .idea
 
+# config
 /server/database/init.js
+./server/config

@@ -1,7 +1,8 @@
 import mongoose from 'mongoose'
+import { Controller, Get } from '../decorator/router'
 import {getList, getpDetail} from "../service/movie"
 
-@controller('/movies')
+@Controller('/movies')
 export default class MovieRouter {
 
   @Get('/all')

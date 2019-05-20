@@ -1,15 +1,15 @@
 import { resolve } from 'path'
 import KoaRouter from 'koa-router'
 import glob from 'glob'
-import R from 'ramba'
+import R from 'ramda'
 
 const pathPrefix = Symbol('pathPrefix')
 const routeMap = []
 let logTimes = 0
 
 const resolvePath = R.unless(
-  R.starsWith('/'),
-  R.curryN(2,R.concat)('/')
+  R.startsWith('/'),
+  R.curryN(2, R.concat)('/')
 )
 
 const changeToArr = R.unless(
@@ -27,7 +27,7 @@ export class Route {
   init = () => {
     const { app, router, routesPath } = this
 
-    glob.sync(resolve(routesPath), './*.js').forEach(require)
+    glob.sync(resolve(routesPath, './*.js')).forEach(require)
 
     R.forEach(
       ({ target, method, path, callback }) => {
@@ -39,14 +39,14 @@ export class Route {
     app.use(router.routes())
     app.use(router.allowedMethods())
   }
-
 }
 
 export const convert = middleware => (target, key, descriptor) => {
   target[key] = R.compose(
     R.concat(
       changeToArr(middleware)
-    ), changeToArr
+    ),
+    changeToArr
   )(target[key])
   return descriptor
 }
@@ -78,7 +78,12 @@ export const Log = convert(async (ctx, next) => {
   console.timeEnd(`${logTimes}: ${ctx.method} - ${ctx.url}`)
 })
 
-export const Required = paramObj => convert(async (ctx, next) => {
+/**
+ * @Required({
+ *   body: ['name', 'password']
+ * })
+ */
+export const Required = paramsObj => convert(async (ctx, next) => {
   let errs = []
 
   R.forEachObjIndexed(
@@ -89,13 +94,13 @@ export const Required = paramObj => convert(async (ctx, next) => {
         )(val)
       )
     }
-  )(paramObj)
+  )(paramsObj)
 
-  if (!R.isempty(errs)) {
+  if (!R.isEmpty(errs)) {
     return (
       ctx.body = {
         success: false,
-        errorCode: 412,
+        errCode: 412,
         errMsg: `${R.join(', ', errs)} is required`
       }
     )
@@ -109,7 +114,7 @@ export const Auth = convert(async (ctx, next) => {
       ctx.body = {
         success: false,
         errCode: 401,
-        errMsg: '登录信息已失效'
+        errMsg: '登陆信息已失效, 请重新登陆'
       }
     )
   }

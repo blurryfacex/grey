@@ -14,7 +14,7 @@ exports.connect = () => {
     mongoose.set('debug', true)
   }
 
-  mongoose.connect(db, {userNewUrlParse: true}, err => {
+  mongoose.connect(db, {useNewUrlParser: true}, err => {
     console.log(err ? 'Conect Error' + err : 'Connection Success')
   })
 }
