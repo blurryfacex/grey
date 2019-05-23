@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const db = 'mongodb://crazy8:vs48yxCeKy0@173.82.255.6/bb'
+
 const glob = require('glob')
 const { resolve } = require('path')
 

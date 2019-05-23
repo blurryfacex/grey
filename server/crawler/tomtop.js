@@ -8,13 +8,14 @@ const sleep = time => new Promise(resolve => {
   setTimeout(resolve, time)
 })
 
+
+
 ;(async () => {
   console.log('start crawling')
 
-  await puppeteer.launch()
-    .then(async browser => {
+  await puppeteer.launch().then(async browser => {
 
-    let page = await browser.newPage()
+    const page = await browser.newPage()
     await page.goto(url,{
       waitUntil: 'networkidle2',
       timeout: 1000000
@@ -39,7 +40,7 @@ const sleep = time => new Promise(resolve => {
       scrollHeight = scrollResult[1];
     }
     await sleep(500)
-    const result = await page.evaluate(function (){
+    const result = await page.evaluate( () =>{
       const $ = window.$
       document.scrollingElement.scrollTop = 5000
       const items = $('.m_product_box a')
@@ -51,48 +52,53 @@ const sleep = time => new Promise(resolve => {
           }
         })
       }
-      page.close()
-      for (var i = 0; i < ilist.length; i++) {
-        let npage =  browser.newPage()
-        fs.mkdir(`./image/${i}`, err => {
-          console.log(err || 'success')
-        })
-        npage.goto(ilist[i], {
-          waitUntil: 'networkidle2',
-          timeout: 1000000
-        })
-        sleep(500)
+      return ilist
+    })
+    page.close()
+
+    for (var i = 0; i < result.length; i++) {
+      const page = await browser.newPage()
+      await page.goto(result[i], {
+        waitUntil: 'networkidle2',
+        timeout: 1000000
+      })
+      fs.mkdir(`./image/${i}`, err => {
+        console.log(err || 'success')
+      })
+      sleep(500)
+
+      const nresult = await page.evaluate(function () {
+        const $ = window.$
+        let mlist = []
         console.log('star inter evaluate')
 
-        let itemList = ('.moveList a img')
-        console.log(itemList)
-        // await page.evaluate(function(){
-        //   console.log('nresult')
-        //   let $ = window.$
-        //   let itemList = $('.moveList a img')
-        //   console.log(itemList)
-        //   if (itemList >= 1) {
-        //     itemList.each(function(index, item){
-        //       console.log(index, item)
-        //       https.get(item.src, (res) => {
-        //         let imgData = ''
-        //         res.setEncoding('binary')
-        //         res.on('data', (chunk) => {
-        //           imgData += chunk
-        //         })
-        //         res.on('end', () => {
-        //           fs.writeFile(`./image/${main_index}/${index}.jpg`, imgData, 'binary', (error) => {
-        //             console.log(error ? error: 'success')
-        //           })
-        //         })
-        //       })
-        //     })
-        //   }
-        // })
-        console.log('end inter evaluate')
-        npage.close()
-      }
-    })
+        let itemList = $('.moveList a img')
+        itemList.each(function(index, item){
+          console.log(index, item)
+          if (item.src) {
+            mlist.push(item.src)
+          }
+        })
+        return mlist
+      })
+      fs.writeFile('./image/data.json',{ i: nresult.toString()}, 'utf-8', (err) => {
+        console.log(err || 'success')
+      })
+      console.log('end inter evaluate')
+      page.close()
+    }
+    // https.get(item.src, (res) => {
+    //   let imgData = ''
+    //   res.setEncoding('binary')
+    //   res.on('data', (chunk) => {
+    //     imgData += chunk
+    //   })
+    //   res.on('end', () => {
+    //     fs.writeFile(`./image/${i}/${index}.jpg`, imgData, 'binary', (error) => {
+    //       console.log(error ? error: 'success')
+    //     })
+    //   })
+    // })
     console.log('result', result)
 
 
