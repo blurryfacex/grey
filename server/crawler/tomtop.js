@@ -5,10 +5,16 @@ const fs = require('fs')
 const https = require('https')
 
 const sleep = time => new Promise(resolve => {
-  setTimeout(resolve, time)
-})
+    setTimeout(resolve, time)
+  })
 
+async function fetchDetail(dirId,imgs) {
 
+  imgs.forEach((item, index) => {
+    console.log(item,index)
+
+  })
+}
 
 ;(async () => {
   console.log('start crawling')
@@ -55,6 +61,20 @@ const sleep = time => new Promise(resolve => {
       return ilist
     })
     page.close()
+    function get (url, m, s) {
+      https.get(url, function(res) {
+        let imgData = ''
+        res.setEncoding('binary')
+        res.on('data', (chunk) => {
+          imgData += chunk
+        })
+        res.on('end', () => {
+          fs.writeFile(`./image/${m}/${s}.jpg`, imgData, 'binary', (error) => {
+            console.log(error ? error: 'success')
+          })
+        })
+      })
+    }
 
     for (var i = 0; i < result.length; i++) {
       const page = await browser.newPage()
@@ -65,43 +85,47 @@ const sleep = time => new Promise(resolve => {
       fs.mkdir(`./image/${i}`, err => {
         console.log(err || 'success')
       })
-      sleep(500)
+      await sleep(500)
 
-      const nresult = await page.evaluate(function () {
-        const $ = window.$
-        let mlist = []
-        console.log('star inter evaluate')
-
-        let itemList = $('.moveList a img')
-        itemList.each(function(index, item){
-          console.log(index, item)
-          if (item.src) {
-            mlist.push(item.src)
-          }
-        })
-        return mlist
+      let nresult = await page.$$eval('.moveList a img', e => {
+        let dd = []
+        for (var z=0;z<e.length;z++) {
+          dd.push(e[z].src)
+        }
+        return dd
       })
-      fs.writeFile('./image/data.json',{ i: nresult.toString()}, 'utf-8', (err) => {
-        console.log(err || 'success')
-      })
-      console.log('end inter evaluate')
-      page.close()
+      for(var n=0;n<nresult.length;n++) {
+        get(nresult[n],i , n)
+      }
+      // const nresult = await page.evaluate(function () {
+      //   const $ = window.$
+      //   let mlist = []
+      //   console.log('star inter evaluate')
+      //
+      //   let itemList = $('.moveList a img')
+      //   itemList.each(function(index, item){
+      //     console.log(index, item)
+      //     if (item.src) {
+      //       mlist.push(item.src)
+      //     }
+      //   })
+      //   return mlist
+      // })
+      // mainList[i] = nresult
+      // console.log(i+': '+mainList[i])
+      console.log('ending')
+      await page.close()
     }
-    // https.get(item.src, (res) => {
-    //   let imgData = ''
-    //   res.setEncoding('binary')
-    //   res.on('data', (chunk) => {
-    //     imgData += chunk
-    //   })
-    //   res.on('end', () => {
-    //     fs.writeFile(`./image/${i}/${index}.jpg`, imgData, 'binary', (error) => {
-    //       console.log(error ? error: 'success')
-    //     })
-    //   })
-    // })
-    console.log('result', result)
 
-
+    // for (var j =0; j< mainList.length; j++) {
+    //   for (var x = 0; x<mainList[j].length; x++) {
+    //     console.log(`${j}-${x}: `, mainList[j][x])
+    //     get(mainList, j, x)
+    //   }
+    // }
+    // function get(obj, m, s) {
+    //
+    // }
   }).catch( err => {
     console.log(err)
   })
