@@ -8,14 +8,6 @@ const sleep = time => new Promise(resolve => {
     setTimeout(resolve, time)
   })
 
-async function fetchDetail(dirId,imgs) {
-
-  imgs.forEach((item, index) => {
-    console.log(item,index)
-
-  })
-}
-
 ;(async () => {
   console.log('start crawling')
 
