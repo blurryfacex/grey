@@ -9,6 +9,7 @@
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.0.2",
     "babel-loader": "^7.1.2",
+    "babel-plugin-named-asset-import": "^0.3.2",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.12",
@@ -16,6 +17,7 @@
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
+    "babel-preset-react-app": "^9.0.0",
     "babel-preset-stage-0": "^6.24.1",
     "bcryptjs": "^2.4.3",
     "bootstrap": "^4.3.1",
@@ -86,7 +88,7 @@
     "workbox-webpack-plugin": "4.2.0"
   },
   "scripts": {
-    "start": "cross-env NODE_ENV=development nodemon scripts/start.js",
+    "start": "node scripts/start.js",
     "dev": "cross-env NODE_ENV=development nodemon ./start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js"
@@ -155,7 +157,7 @@
     "presets": [
       "env",
       "stage-0",
-      "react"
+      "react-app"
     ],
     "plugins": [
       "transform-runtime",

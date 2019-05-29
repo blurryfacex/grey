@@ -1,3 +1,5 @@
+import {prod} from "../middleware/parcel/prod"
+
 const puppeteer = require('puppeteer')
 const fs = require('fs')
 const https = require('https')
@@ -33,19 +35,13 @@ const sleep = time => new Promise(resolve => {
     // await sleep(500)
     const obj = await page.evaluate(() => {
       document.scrollingElement.scrollTop = 5000
-      let x = []
-      let products = document.querySelectorAll('.product_img a')
-      products.forEach((index, item) => {
-        x[index] = []
-        x[index].push(item.href)
+      let products = document.querySelectorAll('.product_img')
+      products.map(el => {
+        return {}
       })
-
-      let src = document.querySelectorAll('.product_img a img')
-      src.forEach((v, c) => {
-        x[v].push(c.src)
-      })
-      return x
     })
+
+
 
     await console.log(obj)
     await page.close()
