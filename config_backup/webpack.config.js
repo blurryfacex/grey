@@ -246,7 +246,6 @@ module.exports = function(webpackEnv) {
                   ],
                 ],
                 cacheDirectory: true,
-                cacheCompression: isEnvProduction,
                 compact: isEnvProduction,
               },
             },
@@ -256,7 +255,6 @@ module.exports = function(webpackEnv) {
               loader: require.resolve('babel-loader'),
               options: {
                 babelrc: true,
-                configFile: false,
                 compact: true,
                 presets: [
                   [
@@ -265,7 +263,6 @@ module.exports = function(webpackEnv) {
                   ],
                 ],
                 cacheDirectory: true,
-                cacheCompression: isEnvProduction,
                 sourceMaps: false,
               },
             },
