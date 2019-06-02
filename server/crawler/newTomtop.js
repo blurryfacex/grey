@@ -1,5 +1,3 @@
-import {prod} from "../middleware/parcel/prod"
-
 const puppeteer = require('puppeteer')
 const fs = require('fs')
 const https = require('https')
@@ -8,6 +6,21 @@ const url = 'https://www.tomtop.com/'
 const sleep = time => new Promise(resolve => {
   setTimeout(resolve, time)
 })
+
+function get (url, m, s) {
+  https.get(url, function(res) {
+    let imgData = ''
+    res.setEncoding('binary')
+    res.on('data', (chunk) => {
+      imgData += chunk
+    })
+    res.on('end', () => {
+      fs.writeFile(`./image/${m}/${s}.jpg`, imgData, 'binary', (error) => {
+        console.log(error ? error: 'success')
+      })
+    })
+  })
+}
 
 ;(async () => {
   console.log('start crawling')
@@ -35,15 +48,34 @@ const sleep = time => new Promise(resolve => {
     // await sleep(500)
     const obj = await page.evaluate(() => {
       document.scrollingElement.scrollTop = 5000
-      let products = document.querySelectorAll('.product_img')
-      products.map(el => {
-        return {}
+      let products = [...document.querySelectorAll('.product_img a')]
+      return products.map(el => {
+        return el.href.trim()
       })
     })
+    page.close()
+    for (var x=0; x< obj.length; x++) {
+      const page = await browser.newPage()
+      await page.goto(obj[x], {
+        waitUntil: 'networkidle2',
+        timeout: 1000000
+      })
+      fs.mkdir(`./image/${x}`, err => {
+        console.log(err || 'success')
+      })
+      await sleep(500)
 
+      let nresult = await page.$$eval('.moveList a img', e => {
+        let dd = []
+        for (var z=0;z<e.length;z++) {
+          dd.push(e[z].src)
+        }
+        return dd
+      })
+      for(var n=0;n<nresult.length;n++) {
+        get(nresult[n] ,x , n)
+      }
+    }
 
-
-    await console.log(obj)
-    await page.close()
   }).catch(err => console.log(err))
 })()
