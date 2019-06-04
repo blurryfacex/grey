@@ -1,26 +1,54 @@
 import React from 'react'
-import App from '../App'
-import { HashRouter, Route, Switch, Redirect } from 'react-router-dom'
-import index from "../pages/front/index/index"
-import Home from "../home"
-import explore from "../pages/front/explore/index"
+import ReactDOM from 'react-dom'
+import { Route, Switch, Redirect } from 'react-router-dom'
+import Loadable from 'react-loadable'
 
-export default class ERouter extends React.Component {
+import Head from '@/components/head'
+import Loading from '@/components/ui/loading'
 
-  render () {
-    return (
-      <HashRouter>
-        <App>
-            <Route path="/" render={() =>
-              <Home>
-                <Switch>
-                  <Route path="/explore" component={explore} />
-                  <Route path="/" component={index} />
-                </Switch>
-              </Home>
-            }/>
-        </App>
-      </HashRouter>
-    )
+import HomeLoadData from '@/pages/home/load-data'
+import PostDetailLoadData from '@/pages/posts-detail/load-data'
+
+export default user => {
+
+  const triggerEnter = (Layout, props) => {
+    return <Layout {...props} />
+  }
+
+  const routeArr = [
+    {
+      path: '/',
+      exact: true,
+      head: Head,
+      component: Loadable({
+        loader: () => import('@/pages/index'),
+        // loading: () => <Loading />
+      }),
+      enter: triggerEnter
+    }
+  ]
+
+  let router = () => (
+    <div>
+      <Switch>
+        {routeArr.map((route, index) => (
+          <Route key={index} path={route.path} exact={route.exact} component={route.head}/>
+          )
+        )}
+      </Switch>
+
+      <Switch>
+        {routeArr.map((route, index) => {
+          if (route.component) {
+            return <Route key={index} path={route.path} exact={route.exact} component={props => route.enter(route.component, props)}/>
+          }
+        })}
+      </Switch>
+    </div>
+  )
+
+  return {
+    list: routeArr,
+    dom: router
   }
 }

@@ -22,7 +22,7 @@
 /******/
 /******/ 	var hotApplyOnUpdate = true;
 /******/ 	// eslint-disable-next-line no-unused-vars
-/******/ 	var hotCurrentHash = "716d9bd2f0cf3540482c";
+/******/ 	var hotCurrentHash = "2d08a9d76c8934993816";
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule;
@@ -740,7 +740,7 @@
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "http://localhost:4001/";
+/******/ 	__webpack_require__.p = "http://localhost:4023/";
 /******/
 /******/ 	// __webpack_hash__
 /******/ 	__webpack_require__.h = function() { return hotCurrentHash; };
@@ -782,7 +782,7 @@ eval("__webpack_require__(/*! @babel/register */ \"@babel/register\");\n\n__webp
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var koa__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! koa */ \"koa\");\n/* harmony import */ var koa__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(koa__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var body_parser__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! body-parser */ \"body-parser\");\n/* harmony import */ var body_parser__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(body_parser__WEBPACK_IMPORTED_MODULE_1__);\n!(function webpackMissingModule() { var e = new Error(\"Cannot find module 'cookie-parser'\"); e.code = 'MODULE_NOT_FOUND'; throw e; }());\n/* harmony import */ var compression__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! compression */ \"compression\");\n/* harmony import */ var compression__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(compression__WEBPACK_IMPORTED_MODULE_3__);\n/* harmony import */ var koa_static__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! koa-static */ \"koa-static\");\n/* harmony import */ var koa_static__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(koa_static__WEBPACK_IMPORTED_MODULE_4__);\n/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @config */ \"./config/index.js\");\n/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_config__WEBPACK_IMPORTED_MODULE_5__);\n!(function webpackMissingModule() { var e = new Error(\"Cannot find module './render'\"); e.code = 'MODULE_NOT_FOUND'; throw e; }());\n\n\n\n\n\n\n\nvar app = new koa__WEBPACK_IMPORTED_MODULE_0___default.a();\napp.use(body_parser__WEBPACK_IMPORTED_MODULE_1___default.a.json());\napp.use(body_parser__WEBPACK_IMPORTED_MODULE_1___default.a.urlencoded({\n  extended: true\n}));\napp.use(!(function webpackMissingModule() { var e = new Error(\"Cannot find module 'cookie-parser'\"); e.code = 'MODULE_NOT_FOUND'; throw e; }())());\napp.use(compression__WEBPACK_IMPORTED_MODULE_3___default()());\napp.use(koa_static__WEBPACK_IMPORTED_MODULE_4___default()('./dist/client'));\napp.use(koa_static__WEBPACK_IMPORTED_MODULE_4___default()('./public'));\napp.use(function (req, res, next) {\n  if (req && req.headers && req.headers['user-agent']) {\n    global.ua = req.headers['user-agent'];\n  }\n\n  var exec_start_at = Date.now();\n  var _send = res.send;\n\n  res.send = function () {\n    res.set('X-Execution-Time', String(Date.now() - exec_start_at) + 'ms');\n    return _send.apply(res, arguments);\n  };\n\n  next();\n});\napp.listen(_config__WEBPACK_IMPORTED_MODULE_5__[\"port\"]);\nconsole.log('server started on port' + _config__WEBPACK_IMPORTED_MODULE_5__[\"port\"]);\n\n//# sourceURL=webpack:///./src/server/server.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var express__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! express */ \"express\");\n/* harmony import */ var express__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(express__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var body_parser__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! body-parser */ \"body-parser\");\n/* harmony import */ var body_parser__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(body_parser__WEBPACK_IMPORTED_MODULE_1__);\n!(function webpackMissingModule() { var e = new Error(\"Cannot find module 'cookie-parser'\"); e.code = 'MODULE_NOT_FOUND'; throw e; }());\n/* harmony import */ var compression__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! compression */ \"compression\");\n/* harmony import */ var compression__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(compression__WEBPACK_IMPORTED_MODULE_3__);\n/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @config */ \"./config/index.js\");\n/* harmony import */ var _config__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_config__WEBPACK_IMPORTED_MODULE_4__);\n!(function webpackMissingModule() { var e = new Error(\"Cannot find module './render'\"); e.code = 'MODULE_NOT_FOUND'; throw e; }());\nfunction asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }\n\nfunction _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, \"next\", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, \"throw\", err); } _next(undefined); }); }; }\n\n\n\n\n\n\n\nvar app = express__WEBPACK_IMPORTED_MODULE_0___default()();\napp.use(body_parser__WEBPACK_IMPORTED_MODULE_1___default.a.json());\napp.use(body_parser__WEBPACK_IMPORTED_MODULE_1___default.a.urlencoded({\n  extended: true\n}));\napp.use(!(function webpackMissingModule() { var e = new Error(\"Cannot find module 'cookie-parser'\"); e.code = 'MODULE_NOT_FOUND'; throw e; }())());\napp.use(compression__WEBPACK_IMPORTED_MODULE_3___default()());\napp.use(express__WEBPACK_IMPORTED_MODULE_0___default.a[\"static\"]('./dist/client'));\napp.use(express__WEBPACK_IMPORTED_MODULE_0___default.a[\"static\"]('./public'));\napp.use(function (req, res, next) {\n  if (req && req.headers && req.headers['user-agent']) {\n    global.ua = req.headers['user-agent'];\n  }\n\n  var exec_start_at = Date.now();\n  var _send = res.send;\n\n  res.send = function () {\n    res.set('X-Execution-Time', String(Date.now() - exec_start_at) + 'ms');\n    return _send.apply(res, arguments);\n  };\n\n  next();\n});\napp.get('*',\n/*#__PURE__*/\nfunction () {\n  var _ref = _asyncToGenerator(\n  /*#__PURE__*/\n  regeneratorRuntime.mark(function _callee(req, res) {\n    var _ref2, context, html, meta, reduxState, user;\n\n    return regeneratorRuntime.wrap(function _callee$(_context) {\n      while (1) {\n        switch (_context.prev = _context.next) {\n          case 0:\n            _context.next = 2;\n            return !(function webpackMissingModule() { var e = new Error(\"Cannot find module './render'\"); e.code = 'MODULE_NOT_FOUND'; throw e; }())(req, res);\n\n          case 2:\n            _ref2 = _context.sent;\n            context = _ref2.context;\n            html = _ref2.html;\n            meta = _ref2.meta;\n            reduxState = _ref2.reduxState;\n            user = _ref2.user;\n            res.status(context.code);\n\n            if (context.redirect) {\n              res.redirect(context.redirect);\n            } else {\n              res.render('../dist/server/index.ejs', {\n                html: html,\n                reduxState: reduxState,\n                meta: meta,\n                theme: user && user.theme == 2 ? 'dark-theme' : 'light-theme'\n              });\n            }\n\n            res.end();\n\n          case 11:\n          case \"end\":\n            return _context.stop();\n        }\n      }\n    }, _callee);\n  }));\n\n  return function (_x, _x2) {\n    return _ref.apply(this, arguments);\n  };\n}());\napp.listen(_config__WEBPACK_IMPORTED_MODULE_4__[\"port\"]);\nconsole.log('server started on port' + _config__WEBPACK_IMPORTED_MODULE_4__[\"port\"]);\n\n//# sourceURL=webpack:///./src/server/server.js?");
 
 /***/ }),
 
@@ -830,25 +830,14 @@ eval("module.exports = require(\"compression\");\n\n//# sourceURL=webpack:///ext
 
 /***/ }),
 
-/***/ "koa":
-/*!**********************!*\
-  !*** external "koa" ***!
-  \**********************/
+/***/ "express":
+/*!**************************!*\
+  !*** external "express" ***!
+  \**************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("module.exports = require(\"koa\");\n\n//# sourceURL=webpack:///external_%22koa%22?");
-
-/***/ }),
-
-/***/ "koa-static":
-/*!*****************************!*\
-  !*** external "koa-static" ***!
-  \*****************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-eval("module.exports = require(\"koa-static\");\n\n//# sourceURL=webpack:///external_%22koa-static%22?");
+eval("module.exports = require(\"express\");\n\n//# sourceURL=webpack:///external_%22express%22?");
 
 /***/ })
 

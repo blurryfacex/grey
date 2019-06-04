@@ -1,7 +1,6 @@
+const express = require('express')
 const webpack = require('webpack')
 const nodemon = require('nodemon')
-const Koa = require('koa')
-const koaStatic = require('koa-static')
 const rimraf = require('rimraf')
 const webpackDevMiddleware = require('webpack-dev-middleware')
 const webpackHotMiddleware = require('webpack-hot-middleware')
@@ -22,8 +21,8 @@ const compilePromise = (compiler) => {
   })
 }
 
-const app = new Koa()
-const WEBPACK_PORT = config.port + 1
+const app = express()
+const WEBPACK_PORT = config.port + 23
 
 const start = async () => {
   rimraf.sync('./dist')
@@ -53,13 +52,13 @@ const start = async () => {
     return next()
   })
 
-  app.use(webpackDevMiddleware(_clientCompiler), {
+  app.use(webpackDevMiddleware(_clientCompiler, {
     publicPath: clientConfig.output.publicPath
-  })
+  }))
 
   app.use(webpackHotMiddleware(_clientCompiler))
 
-  app.use(koaStatic('../dist/client'))
+  app.use(express.static('../dist/client'))
 
   app.listen(WEBPACK_PORT)
 

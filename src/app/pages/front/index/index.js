@@ -1,8 +1,18 @@
 import React from 'react'
+import { withRouter } from 'react-router-dom'
 import Carousel from 'react-bootstrap/Carousel'
 import './index.less'
 
+import Shell from '@/components/shell'
+import Meta from '@/components/meta'
+
+
+@Shell
+@withRouter
 export default class index extends React.Component {
+  constructor(props) {
+    super(props)
+  }
 
   render() {
     return (

@@ -12,6 +12,7 @@ module.exports = {
   target: 'web',
   resolve: {
     alias: {
+      '@': path.resolve('src'),
       '@modules': path.resolve('src/app/modules'),
       '@config': path.resolve('config')
     }
@@ -136,10 +137,20 @@ module.exports = {
     ]
   },
   plugins: [
+    new webpack.DefinePlugin({
+      __SERVER__: 'false',
+      __CLIENT__: 'true'
+    }),
+
     new MiniCssExtractPlugin({
       filename: '[name].css',
       chunkFilename: '[id].css'
     }),
+
+    new MiniCssExtractPlugin({
+      filename: devMode ? '[name].css' : '[name].[hash].css'
+    }),
+
     new HtmlwebpackPlugin({
       filename: path.resolve(__dirname, '../dist/index.html'),
       template: 'public/index.html'

@@ -8,8 +8,8 @@ import ReactGA from 'react-ga'
 import configureStore from '../app/store'
 import createRouter from '../app/router'
 
-
 import * as offlinePluginRuntime from 'offline-plugin'
+
 if (process.env.NODE_ENV != 'development') {
   offlinePluginRuntime.install()
 }
