@@ -11,10 +11,11 @@ module.exports = {
 
   resolve: {
     alias: {
+      '@': path.resolve('src'),
       '@config': path.resolve('config'),
       '@modules': path.resolve('src/app/modules'),
       '@components': path.resolve('src/app/components'),
-      '@actions': path.resolve('src/app/actions'),
+      '@actions': path.resolve('src/app/store/actions'),
       '@reducers': path.resolve('src/app/store/reducers'),
       '@utils': path.resolve('src/app/common')
     }
@@ -35,7 +36,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, '../../dist/server'),
     filename: 'server.js',
-    publicPath: config.publicPath + '/'
+    publicPath: config.publicPath + '/',
   },
 
   resolveLoader: {
@@ -49,33 +50,40 @@ module.exports = {
         exclude: /node_modules/,
         loader: 'babel'
       },
+
       {
-        test: /\.scss$/,
+        test: /'.scss$/,
         use: [
           {
-            loader: `css/locals`,
+            loader: 'css/locals',
             options: {
               modules: true,
               localIdentName: config.classScopedName,
             }
           },
-          { loader: `sass`}
+          { loader: 'sass'}
         ]
       },
+
       {
         test: /\.css$/,
         use: [
-          { loader: `css/locals`}
+          { loader: 'css/locals' }
         ]
       },
+
       { test: /\.(png|jpg|gif)$/, loader: 'url' }
     ]
   },
+
   plugins: [
     new webpack.DefinePlugin({
       __SERVER__: 'true',
       __CLIENT__: 'false',
     }),
 
+    // new CopyWebpackPlugin([
+    //   { from: 'src/server/amp/views', to: 'views/' }
+    // ])
   ]
 }

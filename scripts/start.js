@@ -1,5 +1,5 @@
-const express = require('express')
 const webpack = require('webpack')
+const express = require('express')
 const nodemon = require('nodemon')
 const rimraf = require('rimraf')
 const webpackDevMiddleware = require('webpack-dev-middleware')
@@ -10,10 +10,10 @@ const serverConfig = require('../config/webpack/server.dev')
 
 const config = require('../config')
 
-const compilePromise = (compiler) => {
+const compilerPromise = (compiler) => {
   return new Promise((resolve, reject) => {
     compiler.plugin('done', (stats) => {
-      if (!stats.hasErros()) {
+      if (!stats.hasErrors()) {
         return resolve()
       }
       return reject('Compilation failed')
@@ -22,11 +22,10 @@ const compilePromise = (compiler) => {
 }
 
 const app = express()
-const WEBPACK_PORT = config.port + 23
+const WEBPACK_PORT = config.port + 1
 
-const start = async () => {
+const start = async() => {
   rimraf.sync('./dist')
-
   let public_path = config.publicPath.split(':')
   public_path.pop()
   public_path = public_path.join(':')
@@ -35,8 +34,8 @@ const start = async () => {
 
   clientConfig.output.hotUpdateMainFilename = `[hash].hot-update.json`
   clientConfig.output.hotUpdateChunkFilename = `[id].[hash].hot-update.js`
-  clientConfig.output.publicPath = `${public_path}:${WEBPACK_PORT}/`
 
+  clientConfig.output.publicPath = `${public_path}:${WEBPACK_PORT}/`
   serverConfig.output.publicPath = `${public_path}:${WEBPACK_PORT}/`
 
   const clientCompiler = webpack([clientConfig, serverConfig])
@@ -44,8 +43,8 @@ const start = async () => {
   const _clientCompiler = clientCompiler.compilers[0]
   const _serverCompiler = clientCompiler.compilers[1]
 
-  const clientPromise = compilePromise(_clientCompiler)
-  const serverPromise = compilePromise(_serverCompiler)
+  const clientPromise = compilerPromise(_clientCompiler)
+  const serverPromise = compilerPromise(_serverCompiler)
 
   app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*')
@@ -57,18 +56,15 @@ const start = async () => {
   }))
 
   app.use(webpackHotMiddleware(_clientCompiler))
-
   app.use(express.static('../dist/client'))
-
   app.listen(WEBPACK_PORT)
-
-  _serverCompiler.watch({ ignored: /node_modules/ }, (error, stats) => {
-    if (!error && !stats.hasErrors()) {
+  _serverCompiler.watch({ ignored: /node_modules/ }, (err, stats) => {
+    if (!err && !stats.hasErrors()) {
       console.log(stats.toString(serverConfig.stats))
       return
     }
-    if (error) {
-      console.log(error, 'error')
+    if (err) {
+      console.log(err, 'error')
     }
   })
 
@@ -77,7 +73,7 @@ const start = async () => {
 
   const script = nodemon({
     script: './dist/server/server.js',
-    ignore: ['src', 'scripts', 'config', './*.*', 'build/client']
+    ignore: ['src', 'scripts', 'config', './*.*', 'build/client'],
   })
 
   script.on('restart', () => {
@@ -90,7 +86,7 @@ const start = async () => {
   })
 
   script.on('error', () => {
-    console.log('An error occured Exiting')
+    console.log('An error occured, Exiting')
     process.exit(1)
   })
 }

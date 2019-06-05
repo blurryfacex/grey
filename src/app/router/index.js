@@ -6,9 +6,6 @@ import Loadable from 'react-loadable'
 import Head from '@/components/head'
 import Loading from '@/components/ui/loading'
 
-import HomeLoadData from '@/pages/home/load-data'
-import PostDetailLoadData from '@/pages/posts-detail/load-data'
-
 export default user => {
 
   const triggerEnter = (Layout, props) => {
@@ -21,7 +18,7 @@ export default user => {
       exact: true,
       head: Head,
       component: Loadable({
-        loader: () => import('@/pages/index'),
+        loader: () => import('@/app/pages/front/index'),
         // loading: () => <Loading />
       }),
       enter: triggerEnter
