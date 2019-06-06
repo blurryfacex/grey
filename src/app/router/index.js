@@ -3,49 +3,47 @@ import ReactDOM from 'react-dom'
 import { Route, Switch, Redirect } from 'react-router-dom'
 import Loadable from 'react-loadable'
 
-import Head from '@/components/head'
-import Loading from '@/components/ui/loading'
+import Head from '@components/Header'
+import routerList from './list'
 
-export default user => {
+export default (user, logPageView = () => {}) => {
 
-  const triggerEnter = (Layout, props) => {
-    return <Layout {...props} />
+  const enter = {
+    everybody: (Layout, props, route) => {
+      logPageView()
+      return <Layout {...props} />
+    }
   }
 
-  const routeArr = [
-    {
-      path: '/',
-      exact: true,
-      head: Head,
-      component: Loadable({
-        loader: () => import('@/app/pages/front/index'),
-        // loading: () => <Loading />
-      }),
-      enter: triggerEnter
-    }
-  ]
+
 
   let router = () => (
     <div>
       <Switch>
-        {routeArr.map((route, index) => (
+        {routerList.map((route, index) => (
           <Route key={index} path={route.path} exact={route.exact} component={route.head}/>
           )
         )}
       </Switch>
 
       <Switch>
-        {routeArr.map((route, index) => {
+        {routerList.map((route, index) => {
           if (route.component) {
-            return <Route key={index} path={route.path} exact={route.exact} component={props => route.enter(route.component, props)}/>
+            return (<Route
+              key={index}
+              path={route.path}
+              exact={route.exact}
+              render={props => enter[router.enter](route.component, props, route)}
+            />)
           }
         })}
       </Switch>
+
     </div>
   )
 
   return {
-    list: routeArr,
+    list: routerList,
     dom: router
   }
 }

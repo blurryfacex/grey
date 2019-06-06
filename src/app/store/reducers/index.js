@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-import merge from 'loadash/merge'
+import merge from 'lodash/merge'
 
 
 let _states = {}

@@ -1,5 +1,5 @@
 import jsonP from 'jsonp'
-import axios from 'axios'
+import axios from 'src/app/common/axios'
 
 export default class Axios {
   static ajax(options) {

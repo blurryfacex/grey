@@ -2,7 +2,7 @@ import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
-import parseUrl  from '@/common/parse-url'
+import parseUrl  from '@utils/parse-url'
 
 const Shell = Component => {
   if (!Component.loadData) {
