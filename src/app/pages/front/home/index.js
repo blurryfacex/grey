@@ -15,14 +15,14 @@ export default class Home extends React.PureComponent {
       <div>
         <Meta title="首页" />
 
-        <PostsList
-          id={'home'}
-          filter={{
-            sort_by: 'create_at',
-            deleted: false,
-            weaken: false
-          }}
-        />
+        {/*<PostsList*/}
+          {/*id={'home'}*/}
+          {/*filter={{*/}
+            {/*sort_by: 'create_at',*/}
+            {/*deleted: false,*/}
+            {/*weaken: false*/}
+          {/*}}*/}
+        {/*/>*/}
       </div>
     )
   }

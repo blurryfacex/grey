@@ -2,6 +2,7 @@ import React from 'react'
 import Head from '@components/head'
 import Loadable from 'react-loadable'
 import Loading from '@components/ui/loading'
+
 export default [
   {
     path: '/',

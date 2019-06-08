@@ -118,7 +118,7 @@ module.exports = {
             loader: `css`,
             options: {
               modules: true,
-              localIdentName: config.classScopedName,
+              localIdentName: config.class_scoped_name,
               minimize: true,
               sourceMap: true,
               importLoaders: 1
@@ -196,7 +196,7 @@ module.exports = {
     // 创建视图模版文件，给server使用
     // 主要是打包后的添加的css、js静态文件路径添加到模版中
     new HtmlwebpackPlugin({
-      filename: path.resolve(__dirname, '../../dist/server/index.html'),
+      filename: path.resolve(__dirname, '../../dist/server/index.ejs'),
       template: 'src/app/views/index.html',
       theme: '<%- theme %>',
       metaDom: '<%- meta %>',
