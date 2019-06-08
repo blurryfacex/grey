@@ -4,11 +4,7 @@ const WriteFileWebpackPlugin = require('write-file-webpack-plugin')
 
 const config = {
   ...baseConfig,
-  plugins: [
-    new WriteFileWebpackPlugin(),
-    ...baseConfig.plugins,
-    new webpack.HotModuleReplacementPlugin()
-  ],
+  plugins: [new WriteFileWebpackPlugin(), ...baseConfig.plugins, new webpack.HotModuleReplacementPlugin()],
   mode: 'development'
 }
 

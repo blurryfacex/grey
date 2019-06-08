@@ -2,19 +2,42 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
-import { matchPath } from 'react-router'
+import { StaticRouter, matchPath } from 'react-router'
+import Loadable from 'react-loadable'
 
+import * as OfflinePluginRuntime from 'offline-plugin/runtime';
+OfflinePluginRuntime.install();
+
+import configureStore from '../app/store'
 import createRouter from '../app/router'
 
-import * as offlinePluginRuntime from 'offline-plugin/runtime'
+// 引入 bootstrap
+import 'bootstrap/dist/css/bootstrap.min.css'
+import 'jquery'
+import 'popper.js'
+import 'bootstrap/dist/js/bootstrap.min.js'
 
-if (process.env.NODE_ENV != 'development') {
-  offlinePluginRuntime.install()
-}
+// 引入全局样式
+import '../app/pages/front/global.scss'
 
-(async function() {
+// import runtime from 'serviceworker-webpack-plugin/lib/runtime'
+// if ('serviceWorker' in navigator) {
+//   const registration = runtime.register();
+// } else {
+//   console.log("Don't support serviceWorker")
+// }
 
-  const router = createRouter()
+// 从页面中获取服务端生产redux数据，作为客户端redux初始值
+const store = configureStore(window.__initState__)
+
+import { getUserInfo } from '@reducers/user'
+
+let userinfo = getUserInfo(store.getState())
+
+if (!userinfo || !userinfo.id) userinfo = null
+
+const run = async () => {
+  const router = createRouter(userinfo)
   const RouterDom = router.dom
 
   let _route = null
@@ -27,15 +50,18 @@ if (process.env.NODE_ENV != 'development') {
     }
   })
 
+  // 预先加载首屏的js（否则会出现，loading 一闪的情况）
+  // if (_route && _route.component && _route.component.preload && _route.loadData) {
   await _route.component.preload()
+  // }
 
   ReactDOM.hydrate(
-    <Provider>
+    <Provider store={store}>
       <BrowserRouter>
-        {RouterDom()}
+        <RouterDom />
       </BrowserRouter>
     </Provider>,
-    document.getElementById('root')
+    document.getElementById('app')
   )
 
   if (process.env.NODE_ENV === 'development') {
@@ -43,4 +69,6 @@ if (process.env.NODE_ENV != 'development') {
       module.hot.accept()
     }
   }
-}())
+}
+
+run()

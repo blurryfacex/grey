@@ -10,21 +10,23 @@ const serverConfig = require('../config/webpack/server.dev')
 
 const config = require('../config')
 
-const compilerPromise = (compiler) => {
+const compilerPromise = compiler => {
   return new Promise((resolve, reject) => {
-    compiler.plugin('done', (stats) => {
+    compiler.plugin('done', stats => {
       if (!stats.hasErrors()) {
         return resolve()
       }
       return reject('Compilation failed')
     })
+  }).catch(err => {
+    console.log('error:',err,status)
   })
 }
 
 const app = express()
 const WEBPACK_PORT = config.port + 1
 
-const start = async() => {
+const start = async () => {
   rimraf.sync('./dist')
   let public_path = config.publicPath.split(':')
   public_path.pop()
@@ -35,8 +37,8 @@ const start = async() => {
   clientConfig.output.hotUpdateMainFilename = `[hash].hot-update.json`
   clientConfig.output.hotUpdateChunkFilename = `[id].[hash].hot-update.js`
 
-  clientConfig.output.publicPath = `${public_path}:${WEBPACK_PORT}/`
-  serverConfig.output.publicPath = `${public_path}:${WEBPACK_PORT}/`
+  clientConfig.output.publicPath = `${public_path}:${WEBPACK_PORT}/`;
+  serverConfig.output.publicPath = `${public_path}:${WEBPACK_PORT}/`;
 
   const clientCompiler = webpack([clientConfig, serverConfig])
 
@@ -51,20 +53,27 @@ const start = async() => {
     return next()
   })
 
-  app.use(webpackDevMiddleware(_clientCompiler, {
-    publicPath: clientConfig.output.publicPath
-  }))
+  app.use(
+    webpackDevMiddleware(_clientCompiler, {
+      publicPath: clientConfig.output.publicPath
+    })
+  )
 
+  // 客户端热更新
   app.use(webpackHotMiddleware(_clientCompiler))
+
   app.use(express.static('../dist/client'))
+
   app.listen(WEBPACK_PORT)
-  _serverCompiler.watch({ ignored: /node_modules/ }, (err, stats) => {
-    if (!err && !stats.hasErrors()) {
+
+  // 服务端代码更新监听
+  _serverCompiler.watch({ ignored: /node_modules/ }, (error, stats) => {
+    if (!error && !stats.hasErrors()) {
       console.log(stats.toString(serverConfig.stats))
       return
     }
-    if (err) {
-      console.log(err, 'error')
+    if (error) {
+      console.log(error, 'error')
     }
   })
 
@@ -72,12 +81,12 @@ const start = async() => {
   await clientPromise
 
   const script = nodemon({
-    script: './dist/server/server.js',
-    ignore: ['src', 'scripts', 'config', './*.*', 'build/client'],
+    script: `./dist/server/server.js`,
+    ignore: ['src', 'scripts', 'config', './*.*', 'build/client']
   })
 
   script.on('restart', () => {
-    console.log('Server side app has been restarted')
+    console.log('Server side app has been restarted.')
   })
 
   script.on('quit', () => {
@@ -86,7 +95,7 @@ const start = async() => {
   })
 
   script.on('error', () => {
-    console.log('An error occured, Exiting')
+    console.log('An error occured. Exiting')
     process.exit(1)
   })
 }

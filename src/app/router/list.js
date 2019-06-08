@@ -1,18 +1,32 @@
 import React from 'react'
+import Head from '@components/head'
 import Loadable from 'react-loadable'
-
-import Head from '@components/Header'
-
+import Loading from '@components/ui/loading'
 export default [
   {
     path: '/',
     exact: true,
     head: Head,
+    // component: asyncRouteComponent({
+    //   loader: () => import('../pages/front/home')
+    // }),
     component: Loadable({
-      loader: () => import('../pages/front/index'),
-      // loading: () => <Loading />
+      loader: () => import('../pages/front/home'),
+      loading: () => <Loading />
     }),
-    // loadData: HomeLoadData,
+    enter: 'everybody',
+  },
+
+  {
+    path: '**',
+    head: Head,
+    // component: asyncRouteComponent({
+    //   loader: () => import('../pages/front/not-found')
+    // }),
+    component: Loadable({
+      loader: () => import('../pages/front/not-found'),
+      loading: () => <Loading />
+    }),
     enter: 'everybody'
   }
 ]
