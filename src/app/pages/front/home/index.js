@@ -1,5 +1,6 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
+import ad from '@components/ad'
 
 // 壳组件
 import Shell from '@components/shell'
@@ -14,7 +15,6 @@ export default class Home extends React.PureComponent {
     return (
       <div>
         <Meta title="首页" />
-
         {/*<PostsList*/}
           {/*id={'home'}*/}
           {/*filter={{*/}

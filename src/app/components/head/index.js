@@ -1,4 +1,6 @@
 import React from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// import { chevronDown } from '@fortawesome/free-solid-svg-icons'
 import './style.scss'
 
 export default class Head extends React.Component {
@@ -16,14 +18,17 @@ export default class Head extends React.Component {
               <img src={require('../../../../public/logo.png')} />
             </a>
           </div>
-          <div className="head_country col-1">
-          12412412
+          <div className="head_country col-2">
+            <span>123</span>
+            <span>|</span>
+            <span>English</span>
+
           </div>
-          <div className="head_search col-6">
-          dfgsdfgdsf
+          <div className="head_search col-5">
+            dfgsdfgdsf
           </div>
           <div className="head_right col-3">
-          adsgadsjflkajs
+            adsgadsjflkajs
           </div>
         </div>
       </header>

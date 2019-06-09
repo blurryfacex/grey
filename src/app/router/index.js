@@ -27,7 +27,7 @@ export default (user, logPageView = () => {}) => {
   }
 
   let router = () => (
-    <div>
+    <>
       <Switch>
         {routeArr.map((route, index) => (
           <Route key={index} path={route.path} exact={route.exact} component={route.head} />
@@ -50,7 +50,7 @@ export default (user, logPageView = () => {}) => {
         </Switch>
       </div>
 
-    </div>
+    </>
   )
 
   return {
