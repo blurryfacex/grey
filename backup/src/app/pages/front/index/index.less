@@ -1,0 +1,57 @@
+@import '../style/common';
+
+.carousel {
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(ellipse at center, transparent 50%, #000 100%),linear-gradient(45deg, #000 0%, transparent 50%);
+    z-index: 102;
+  }
+  .Carousel-Item {
+    height: 600px;
+  }
+  img {
+    width: 100%;
+    height: 600px;
+  }
+}
+
+.swiper {
+  margin: 0 auto;
+  max-width: 1260px;
+  padding: 0 15px;
+  margin-top: 20px;
+
+  .nbar {
+    background-color: #ffffff;
+    background-image: url(/carousel/film.png);
+    background-repeat: repeat-x;
+    width: 100%;
+    height: 32px;
+  }
+
+  .Picture--rectangle {
+    img {
+      width: 95%;
+      height: auto;
+    }
+
+    @media (min-width: 64em) {
+      .MoviePostersGrid-poster {
+        margin-bottom: 80px;
+        padding: 0 1.5625rem;
+      }
+    }
+  }
+}
+.content {
+  text-align: center;
+
+
+}
+
