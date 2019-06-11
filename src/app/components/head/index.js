@@ -1,6 +1,8 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import { chevronDown } from '@fortawesome/free-solid-svg-icons'
+import { faAngleDown } from '@fortawesome/free-solid-svg-icons'
+
+import Search  from '../search'
 import './style.scss'
 
 export default class Head extends React.Component {
@@ -22,10 +24,10 @@ export default class Head extends React.Component {
             <span>123</span>
             <span>|</span>
             <span>English</span>
-
+            <FontAwesomeIcon icon={faAngleDown} />
           </div>
           <div className="head_search col-5">
-            dfgsdfgdsf
+            <Search />
           </div>
           <div className="head_right col-3">
             adsgadsjflkajs
