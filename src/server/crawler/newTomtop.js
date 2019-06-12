@@ -25,7 +25,9 @@ function get (url, m, s) {
 ;(async () => {
   console.log('start crawling')
 
-  await puppeteer.launch().then(async browser => {
+  await puppeteer.launch({
+    headless: false
+  }).then(async browser => {
     const page = await browser.newPage()
     await page.goto(url, {
       waitUntil: 'networkidle2',
