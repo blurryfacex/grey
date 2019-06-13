@@ -17,7 +17,7 @@ let config = {
   auth_cookie_name: 'signin-cookie',
 
   // https://github.com/css-modules/css-modules
-  class_scoped_name: '[hash:base64:8]',
+  class_scoped_name: '[hash:base64]',
 
   // 前端打包后，静态资源路径前缀
   // 生成效果如：//localhost:4000/app.bundle.js
