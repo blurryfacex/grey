@@ -12,7 +12,7 @@ export default [
     //   loader: () => import('../pages/front/home')
     // }),
     component: Loadable({
-      loader: () => import('../pages/front/home'),
+      loader: () => import('../pages/home'),
       loading: () => <Loading />
     }),
     enter: 'everybody',
@@ -25,7 +25,7 @@ export default [
     //   loader: () => import('../pages/front/not-found')
     // }),
     component: Loadable({
-      loader: () => import('../pages/front/not-found'),
+      loader: () => import('../pages/not-found'),
       loading: () => <Loading />
     }),
     enter: 'everybody'

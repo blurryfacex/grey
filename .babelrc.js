@@ -9,19 +9,19 @@ module.exports = function(api) {
       "@babel/preset-env",
       "@babel/preset-react",
       "@babel/preset-flow"
-    ],  
+    ],
     "plugins": [
       ["@babel/plugin-proposal-decorators", { "legacy": true }],
       "@babel/plugin-proposal-class-properties",
       "@babel/plugin-syntax-dynamic-import",
-      ["react-css-modules", {
-        "generateScopedName": config.class_scoped_name,
-        "filetypes": {
-          ".scss": {
-            "syntax": "postcss-scss"
-          }
-        }
-      }]
+      // ["react-css-modules", {
+      //   "generateScopedName": config.class_scoped_name,
+      //   "filetypes": {
+      //     ".scss": {
+      //       "syntax": "postcss-scss"
+      //     }
+      //   }
+      // }]
     ]
 
   };

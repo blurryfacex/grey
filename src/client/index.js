@@ -18,7 +18,7 @@ import 'popper.js'
 import 'bootstrap/dist/js/bootstrap.min.js'
 
 // 引入全局样式
-import '../app/pages/front/global.scss'
+import '../app/pages/global.scss'
 
 // import runtime from 'serviceworker-webpack-plugin/lib/runtime'
 // if ('serviceWorker' in navigator) {

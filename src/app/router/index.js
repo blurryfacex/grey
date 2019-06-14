@@ -9,8 +9,8 @@ import Loadable from 'react-loadable'
 import Head from '@components/head'
 import Loading from '@components/ui/loading'
 
-import HomeLoadData from '../pages/front/home/load-data'
-import PostsDetailLoadData from '../pages/front/posts-detail/load-data'
+import HomeLoadData from '../pages/home/load-data'
+import PostsDetailLoadData from '../pages/posts-detail/load-data'
 import routeArr from './list'
 /**
  * 创建路由
