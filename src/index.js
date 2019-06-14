@@ -1,17 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.scss';
+import './index.css';
 import App from './App';
-import { Provider } from 'react-redux'
 import * as serviceWorker from './serviceWorker';
-import configureStore from './redux'
-import Router from './app/router'
 
-const store = configureStore()
-ReactDOM.hydrate(
-  <Provider store={store}>
-    <Router />
-  </Provider>,
+ReactDOM.render(
+  <div>
+    <App />
+  </div>,
   document.getElementById('root')
 );
 
