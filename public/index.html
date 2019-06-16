@@ -19,20 +19,41 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
+    <!-- 自定义 head -->
+    <%= htmlWebpackPlugin.options.head %>
+
+    <!-- 自定义 meta -->
+    <%= htmlWebpackPlugin.options.metaDom %>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+    <div id="app"><%= htmlWebpackPlugin.options.htmlDom %></div>
+    <!--[if lt IE 10]>
+    <style type="text/css">
+      body {
+        padding: 0;
+        margin: 0;
+      }
+      .no-supper {
+        width: 100%;
+        min-height: 100px;
+        text-align: center;
+        line-height: 100px;
+        background-color: #ffbd91;
+        color: #000;
+        position: fixed;
+        top: 100%;
+        margin-top: -100px;
+        z-index: 999;
+      }
+      .no-supper a {
+        color: #45a7ff;
+      }
+    </style>
+    <div class="no-supper">
+      您的浏览器版本较低，可能存在安全风险，请升级到最新IE浏览器。亦可下载
+      <a href="https://chrome.google.com/" target="_blank">Google Chrome</a>
+    </div>
+    <![endif]-->
   </body>
 </html>

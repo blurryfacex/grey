@@ -17,7 +17,6 @@ export default [
     }),
     enter: 'everybody',
   },
-
   {
     path: '**',
     head: Head,

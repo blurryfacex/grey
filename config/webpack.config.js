@@ -1,4 +1,4 @@
-'use strict';
+
 
 const fs = require('fs');
 const isWsl = require('is-wsl');
@@ -177,6 +177,17 @@ module.exports = function(webpackEnv) {
         .map(ext => `.${ext}`)
         .filter(ext => useTypeScript || !ext.includes('ts')),
       alias: {
+        '@config': path.resolve('src/config.js'),
+        // 模块
+        '@modules': path.resolve('src/app/modules'),
+        // 组件
+        '@components': path.resolve('src/app/components'),
+        // redux actions
+        '@actions': path.resolve('src/app/store/actions'),
+        // redux reducers
+        '@reducers': path.resolve('src/app/store/reducers'),
+        // 工具
+        '@utils': path.resolve('src/app/common'),
         'react-native': 'react-native-web',
       },
       plugins: [

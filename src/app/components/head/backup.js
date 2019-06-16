@@ -7,7 +7,7 @@ import { connect } from 'react-redux'
 import { signOut } from '@actions/user'
 import { getUserInfo } from '@reducers/user'
 
-import './style.scss'
+import './index.scss'
 
 @connect(
   (state, props) => ({

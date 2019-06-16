@@ -6,7 +6,6 @@ import { StaticRouter, matchPath } from 'react-router'
 import Loadable from 'react-loadable'
 
 import * as OfflinePluginRuntime from 'offline-plugin/runtime';
-OfflinePluginRuntime.install();
 
 import configureStore from '../app/store'
 import createRouter from '../app/router'
@@ -26,49 +25,46 @@ import '../app/pages/global.scss'
 // } else {
 //   console.log("Don't support serviceWorker")
 // }
-
+import { getUserInfo } from '@reducers/user'
+OfflinePluginRuntime.install();
 // 从页面中获取服务端生产redux数据，作为客户端redux初始值
 const store = configureStore(window.__initState__)
-
-import { getUserInfo } from '@reducers/user'
 
 let userinfo = getUserInfo(store.getState())
 
 if (!userinfo || !userinfo.id) userinfo = null
 
-const run = async () => {
-  const router = createRouter(userinfo)
-  const RouterDom = router.dom
 
-  let _route = null
+const router = createRouter(userinfo)
+const RouterDom = router.dom
 
-  router.list.some(route => {
-    let match = matchPath(window.location.pathname, route)
-    if (match && match.path) {
-      _route = route
-      return true
-    }
-  })
+let _route = null
 
-  // 预先加载首屏的js（否则会出现，loading 一闪的情况）
-  // if (_route && _route.component && _route.component.preload && _route.loadData) {
-  await _route.component.preload()
-  // }
+router.list.some(route => {
+  let match = matchPath(window.location.pathname, route)
+  if (match && match.path) {
+    _route = route
+    return true
+  }
+})
 
-  ReactDOM.hydrate(
-    <Provider store={store}>
-      <BrowserRouter>
-        <RouterDom />
-      </BrowserRouter>
-    </Provider>,
-    document.getElementById('app')
-  )
+// 预先加载首屏的js（否则会出现，loading 一闪的情况）
+// if (_route && _route.component && _route.component.preload && _route.loadData) {
+_route.component.preload()
+// }
 
-  if (process.env.NODE_ENV === 'development') {
-    if (module.hot) {
-      module.hot.accept()
-    }
+ReactDOM.hydrate(
+  <Provider store={store}>
+    <BrowserRouter>
+      <RouterDom />
+    </BrowserRouter>
+  </Provider>,
+  document.getElementById('app')
+)
+
+if (process.env.NODE_ENV === 'development') {
+  if (module.hot) {
+    module.hot.accept()
   }
 }
 
-run()

@@ -7,6 +7,7 @@ import Shell from '@components/shell'
 import Meta from '@components/meta'
 import PostsList from '@components/posts/list'
 
+
 @Shell
 @withRouter
 export default class Home extends React.PureComponent {

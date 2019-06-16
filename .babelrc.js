@@ -10,17 +10,8 @@ module.exports = function(api) {
     ],
     "plugins": [
       ["@babel/plugin-proposal-decorators", { "legacy": true }],
-      "@babel/plugin-proposal-class-properties",
-      "@babel/plugin-syntax-dynamic-import",
-      // ["react-css-modules", {
-      //   "generateScopedName": config.class_scoped_name,
-      //   "filetypes": {
-      //     ".scss": {
-      //       "syntax": "postcss-scss"
-      //     }
-      //   }
-      // }]
+      ["@babel/plugin-proposal-class-properties", { "loose": true }],
+      ["@babel/plugin-syntax-dynamic-import"],
     ]
-
   };
 };
