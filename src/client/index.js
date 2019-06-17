@@ -11,13 +11,15 @@ import configureStore from '../app/store'
 import createRouter from '../app/router'
 
 // 引入 bootstrap
-import 'bootstrap/dist/css/bootstrap.min.css'
+
+// import 'bootstrap/dist/css/bootstrap.min.css'
+import '@fortawesome/fontawesome-svg-core'
 import 'jquery'
 import 'popper.js'
-import 'bootstrap/dist/js/bootstrap.min.js'
-
-// 引入全局样式
+// import 'bootstrap/dist/js/bootstrap.min.js'
 import '../app/pages/global.scss'
+// 引入全局样式
+
 
 // import runtime from 'serviceworker-webpack-plugin/lib/runtime'
 // if ('serviceWorker' in navigator) {
@@ -33,7 +35,6 @@ const store = configureStore(window.__initState__)
 let userinfo = getUserInfo(store.getState())
 
 if (!userinfo || !userinfo.id) userinfo = null
-
 
 const router = createRouter(userinfo)
 const RouterDom = router.dom

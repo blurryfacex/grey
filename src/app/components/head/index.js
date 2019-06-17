@@ -1,6 +1,7 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAngleDown } from '@fortawesome/free-solid-svg-icons'
+import { faAngleDown, faSearch, faShoppingCart } from '@fortawesome/free-solid-svg-icons'
+import { faUser, faHeart } from '@fortawesome/free-regular-svg-icons'
 import { withRouter } from 'react-router'
 import './index.scss'
 
@@ -9,53 +10,78 @@ export default class Head extends React.Component {
 
   constructor(props) {
     super(props)
+    this.state = {
+      option: 'none'
+    }
+  }
+
+  optionChange = () => {
+    this.setState({
+      options: this.state.options === 'none' ? 'block' : 'none'
+    })
   }
 
   render() {
     return (
-      <header className="container">
-        <div className="row">
-          <div className="head_logo col-2">
+      <header className="w">
+        <div className="head">
+          <div className="head_logo">
             <a href={'/'}>
               <img src='/logo.png' />
             </a>
           </div>
-          <div className="head_country col-2">
-            <span>123</span>
-            <span>|</span>
-            <span>English</span>
-            <FontAwesomeIcon icon={faAngleDown} />
-          </div>
-          <div className="head_search col-5">
-            <div className="search">
+          <div className="head_search">
+            <div className="head_search_wrap">
               <div className="search_input">
                 <div className="search_input_left">
-                  <div className="options_list" >
+                  <div className="options category" style={{display: this.state.option}}>
+                    <ul>
+                      <li>124421</li>
+                      <li>124421</li>
+                      <li>124421</li>
+                      <li>124421</li>
+                      <li>124421</li>
+                      <li>124421</li>
+                    </ul>
                   </div>
-                  <div className="">
-                    <em>All</em>
-                    <FontAwesomeIcon icon={faAngleDown}/>
+                  <span onClick={optionChange()}>All</span>
+                  <div>
+                    <FontAwesomeIcon icon={faAngleDown} />
                   </div>
                 </div>
                 <div className="search_input_middle">
+                  <input placeholder="what are you looking for" />
                 </div>
                 <div className="search_input_right">
+                  <a type="button">
+                    <FontAwesomeIcon icon={faSearch}/>
+                  </a>
                 </div>
               </div>
-              <div className="search_click">
-                <ul className='search'>
-                  <li>xioami</li>
-                  <li>xioami</li>
-                  <li>xioami</li>
-                  <li>xioami</li>
-                  <li>xioami</li>
-                  <li>xioami</li>
-                </ul>
+              <div className="search_btm">
+                <a href="/"><span>xiaomi></span></a>
+                <a href="/"><span>xiaomi></span></a>
+                <a href="/"><span>xiaomi></span></a>
+                <a href="/"><span>xiaomi></span></a>
+                <a href="/"><span>xiaomi></span></a>
+                <a href="/"><span>xiaomi></span></a>
+                <a href="/"><span>xiaomi></span></a>
               </div>
             </div>
           </div>
-          <div className="head_right col-3">
-            adsgadsjflkajs
+          <div className="head_icons">
+            <a href="/" className="icon">
+              <FontAwesomeIcon className="item" icon={faUser} />
+              <span>sign in</span>
+            </a>
+            <a href="/" className="icon">
+              <FontAwesomeIcon className="item" icon={faHeart}/>
+              <span>sign in</span>
+            </a>
+            <a href="/" className="icon">
+              <FontAwesomeIcon className="item" icon={faShoppingCart}/>
+              <span>sign in</span>
+            </a>
           </div>
         </div>
       </header>

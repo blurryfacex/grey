@@ -19,7 +19,6 @@ export default [
   },
   {
     path: '**',
-    head: Head,
     // component: asyncRouteComponent({
     //   loader: () => import('../pages/front/not-found')
     // }),
