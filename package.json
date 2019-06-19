@@ -170,6 +170,7 @@
     "postcss-scss": "^2.0.0",
     "progress-bar-webpack-plugin": "^1.11.0",
     "react-loadable": "^5.5.0",
+    "reactjs-swiper": "^0.1.0",
     "webpack-bundle-analyzer": "^3.0.3",
     "webpack-cli": "^3.1.2",
     "webpack-hot-middleware": "^2.24.2",

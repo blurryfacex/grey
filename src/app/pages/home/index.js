@@ -1,6 +1,7 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
 import ad from '@components/ad'
+import Carousel from '@components/carousel'
 
 // 壳组件
 import Shell from '@components/shell'
@@ -16,14 +17,10 @@ export default class Home extends React.PureComponent {
     return (
       <div>
         <Meta title="首页" />
-        {/*<PostsList*/}
-          {/*id={'home'}*/}
-          {/*filter={{*/}
-            {/*sort_by: 'create_at',*/}
-            {/*deleted: false,*/}
-            {/*weaken: false*/}
-          {/*}}*/}
-        {/*/>*/}
+        <Carousel />
+        <div className="w">
+
+        </div>
       </div>
     )
   }
