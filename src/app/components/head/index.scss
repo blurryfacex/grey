@@ -98,28 +98,50 @@ header {
   ul {
 
   }
-  li {
-    line-height: 57px;
-    font-size: 14px;
-    color: #333;
-    text-align: left;
-    padding: 0 43px;
-    padding-right: 10px;
-  }
-
   .category {
     display: flex;
   }
 
   .nav_l {
     width: 240px;
+
+    ul {
+
+      width: 257px;
+      height: 455px;
+    }
+    a {
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      border: 1px solid transparent;
+      border-right: none;
+      display: block;
+      width: 100%;
+      height: 35px;
+      line-height: 30px;
+      font-size: 13px;
+      position: relative;
+      transition: padding .5s ease;
+    }
+    .icon_title {
+
+      padding: 0 10px;
+    }
+
+    .icon_right {
+      float: right;
+      padding-right: 10px;
+    }
     .nav_title {
       display: inline-flex;
       justify-content: center;
       align-items: center;
+      padding-left: 10px;
     }
     .nav_bar {
       position: absolute;
+      background: rgba(255,255,255,.8);
       z-index: 2;
     }
     .nav_icon {
@@ -128,10 +150,21 @@ header {
   }
   .nav_r {
     display: inline-flex;
+
+    li {
+      line-height: 57px;
+      font-size: 14px;
+      color: #333;
+      text-align: left;
+      padding: 0 43px;
+      padding-right: 10px;
+    }
+
     span {
       font-size: 14px;
       padding-right: 10px;
     }
+
     :hover svg {
       transform-origin: center center;
       transform: rotate(180deg);
@@ -144,6 +177,7 @@ header {
       -o-transition: -o-transform 0.2s;
       -ms-transition: -ms-transform 0.2s;
     }
+
   }
 
 

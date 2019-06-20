@@ -1,6 +1,6 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAngleDown, faSearch, faShoppingCart, faAlignJustify,	 } from '@fortawesome/free-solid-svg-icons'
+import { faAngleDown, faAngleRight, faSearch, faShoppingCart, faAlignJustify, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'
 import { faUser, faHeart } from '@fortawesome/free-regular-svg-icons'
 import { withRouter } from 'react-router'
 import './index.scss'
@@ -99,11 +99,62 @@ export default class Head extends React.Component {
               <h5>Shop By Department</h5>
             </div>
             <ul className="nav_bar">
-              <li><a>New Arrivals</a></li>
-              <li><a>New Arrivals</a></li>
-              <li><a>New Arrivals</a></li>
-              <li><a>New Arrivals</a></li>
-              <li><a>New Arrivals</a></li>
+              <li>
+                <a>
+                  <i className="icon_title"><FontAwesomeIcon icon={faMapMarkerAlt}/></i>
+                  New Arrivals
+                  <i className="icon_right"><FontAwesomeIcon icon={faAngleRight}/></i>
+                </a>
+              </li>
+              <li>
+                <a>
+                  <i className="icon_title"><FontAwesomeIcon icon={faMapMarkerAlt}/></i>
+                  New Arrivals
+                  <i className="icon_right"><FontAwesomeIcon icon={faAngleRight}/></i>
+                </a>
+              </li>
+              <li>
+                <a>
+                  <i className="icon_title"><FontAwesomeIcon icon={faMapMarkerAlt}/></i>
+                  New Arrivals
+                  <i className="icon_right"><FontAwesomeIcon icon={faAngleRight}/></i>
+                </a>
+              </li>
+              <li>
+                <a>
+                  <i className="icon_title"><FontAwesomeIcon icon={faMapMarkerAlt}/></i>
+                  New Arrivals
+                  <i className="icon_right"><FontAwesomeIcon icon={faAngleRight}/></i>
+                </a>
+              </li>
+              <li>
+                <a>
+                  <i className="icon_title"><FontAwesomeIcon icon={faMapMarkerAlt}/></i>
+                  New Arrivals
+                  <i className="icon_right"><FontAwesomeIcon icon={faAngleRight}/></i>
+                </a>
+              </li>
+              <li>
+                <a>
+                  <i className="icon_title"><FontAwesomeIcon icon={faMapMarkerAlt}/></i>
+                  New Arrivals
+                  <i className="icon_right"><FontAwesomeIcon icon={faAngleRight}/></i>
+                </a>
+              </li>
+              <li>
+                <a>
+                  <i className="icon_title"><FontAwesomeIcon icon={faMapMarkerAlt}/></i>
+                  New Arrivals
+                  <i className="icon_right"><FontAwesomeIcon icon={faAngleRight}/></i>
+                </a>
+              </li>
+              <li>
+                <a>
+                  <i className="icon_title"><FontAwesomeIcon icon={faMapMarkerAlt}/></i>
+                  New Arrivals
+                  <i className="icon_right"><FontAwesomeIcon icon={faAngleRight}/></i>
+                </a>
+              </li>
             </ul>
           </div>
           <ul className="nav_r">
